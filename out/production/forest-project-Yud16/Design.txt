@@ -1,0 +1,4 @@
+getNumFromRange: it can be in any class that wants a random num
+removeEntity: can be in both eventScheduler and worldModel because it calls functions from both of them.
+moveTo*: can be in multiple classes like entity and worldmodel.
+parse*: can be in both worldModel and Entity
