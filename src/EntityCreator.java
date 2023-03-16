@@ -69,4 +69,7 @@ public class EntityCreator {
     public static DudeFull createDudeFull(String id, Point position,List<PImage> images, int resourceLimit, double actionPeriod, double animationPeriod) {
         return new DudeFull( id, position, images, resourceLimit, actionPeriod, animationPeriod);
     }
+    public static Portal createPortal(String id, Point position, List<PImage> images, int animationPeriod) {
+        return new Portal(id, position, images, animationPeriod);
+    }
 }

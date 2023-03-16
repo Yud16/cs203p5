@@ -80,8 +80,8 @@ public final class VirtualWorld extends PApplet {
             }
             System.out.println(msg);
         }
-        //Portal p = EntityCreator.createPortal("portal",pressed,null,0);
-        //world.tryAddEntity(p);
+        Portal p = EntityCreator.createPortal("portal",pressed,null,0);
+        world.tryAddEntity(p);
 
 
     }
