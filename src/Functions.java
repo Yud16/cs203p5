@@ -71,6 +71,15 @@ public final class Functions {
         }
     }
 
+    public static void parseWizard(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
+        if (properties.length == EntityCreator.WIZARD_NUM_PROPERTIES) {
+            Entity entity = EntityCreator.createWizard(id, pt, Double.parseDouble(properties[EntityCreator.WIZARD_ACTION_PERIOD]), Double.parseDouble(properties[EntityCreator.WIZARD_ANIMATION_PERIOD]), imageStore.getImageList(EntityCreator.WIZARD_KEY));
+            world.tryAddEntity(entity);
+        }else{
+            throw new IllegalArgumentException(String.format("%s requires %d properties when parsing", EntityCreator.WIZARD_KEY, EntityCreator.WIZARD_NUM_PROPERTIES));
+        }
+    }
+
     public static void parseTree(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
         if (properties.length == EntityCreator.TREE_NUM_PROPERTIES) {
             Entity entity = EntityCreator.createTree(id, pt, Double.parseDouble(properties[EntityCreator.TREE_ACTION_PERIOD]), Double.parseDouble(properties[EntityCreator.TREE_ANIMATION_PERIOD]), Integer.parseInt(properties[EntityCreator.TREE_HEALTH]), imageStore.getImageList(EntityCreator.TREE_KEY));
@@ -178,6 +187,7 @@ public final class Functions {
                 case EntityCreator.SAPLING_KEY -> Functions.parseSapling(world, properties, pt, id, imageStore);
                 case EntityCreator.STUMP_KEY -> Functions.parseStump(world, properties, pt, id, imageStore);
                 case EntityCreator.PORTAL_KEY-> Functions.parsePortal(world, properties, pt, id, imageStore);
+                case EntityCreator.WIZARD_KEY -> Functions.parseWizard(world, properties, pt, id, imageStore);
                 default -> throw new IllegalArgumentException("Entity key is unknown");
             }
         }else{

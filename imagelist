@@ -38,12 +38,19 @@ sapling images/sapling1.png
 sapling images/sapling2.png
 sapling images/sapling3.png
 sapling images/sapling4.png
-portal images/portal1.png 0 0 0
-portal images/portal2.png 0 0 0
-portal images/portal3.png 0 0 0
-portal images/portal4.png 0 0 0
-portal images/portal5.png 0 0 0
-portal images/portal6.png 0 0 0
-portal images/portal7.png 0 0 0
-portal images/portal8.png 0 0 0
-portal images/portal9.png 0 0 0
+portal images/new-portal-1.png.png 0 0 0 0
+portal images/new-portal-2.png.png 0 0 0 0
+portal images/new-portal-3.png.png 0 0 0 0
+wizard images/wizard-1.png.png
+wizard images/wizard-2.png.png
+wizard images/wizard-3.png.png
+wizard images/wizard-4.png.png
+wizard images/wizard-5.png.png
+wizard images/wizard-6.png.png
+
+
+
+
+
+
+

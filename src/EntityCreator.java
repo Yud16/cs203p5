@@ -39,6 +39,11 @@ public class EntityCreator {
     public static final int PORTAL_ANIMATION_PERIOD = 0;
     public static final int PORTAL_NUM_PROPERTIES = 1;
 
+    public static final String WIZARD_KEY = "wizard";
+    public static final int WIZARD_ANIMATION_PERIOD = 0;
+    public static final int WIZARD_ACTION_PERIOD = 1;
+    public static final int WIZARD_NUM_PROPERTIES = 2;
+
 
     public static House createHouse(String id, Point position, List<PImage> images) {
         return new House(id, position, images);
@@ -62,6 +67,10 @@ public class EntityCreator {
     }
 
     public static Fairy createFairy(String id, Point position, double actionPeriod, double animationPeriod, List<PImage> images) {
+        return new Fairy(id, position, images, actionPeriod, animationPeriod);
+    }
+
+    public static Fairy createWizard(String id, Point position, double actionPeriod, double animationPeriod, List<PImage> images) {
         return new Fairy(id, position, images, actionPeriod, animationPeriod);
     }
 
