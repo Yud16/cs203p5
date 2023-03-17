@@ -88,4 +88,10 @@ public class EntityCreator {
     public static Portal createPortal(String id, Point position, double animationPeriod, List<PImage> images) {
         return new Portal(id, position, images, animationPeriod);
     }
+    public static Wizard createWizard(String id, Point position, List<PImage> images, double actionPeriod, double animationPeriod) {
+        return new Wizard(id, position, images, actionPeriod, animationPeriod);
+    }
+    public static EvilFairy createEvilFairy(String id, Point position, List<PImage> images,double actionPeriod, double animationPeriod) {
+        return new EvilFairy(id, position, images, actionPeriod, animationPeriod);
+    }
 }
