@@ -25,16 +25,14 @@ public final class Stump implements Entity{
     public void setPosition(Point position) {
         this.position = position;
     }
-    public PImage getCurrentImage() {
-            return this.images.get(this.imageIndex % this.images.size());
+
+    @Override
+    public List<PImage> getImages() {
+        return images;
     }
 
-    /**
-     * Helper method for testing. Preserve this functionality while refactoring.
-     */
-    public String log(){
-        return this.id.isEmpty() ? null :
-                String.format("%s %d %d %d", this.id, this.position.getX(), this.position.getY(), this.imageIndex);
+    @Override
+    public int getImageIndex() {
+        return imageIndex;
     }
-
 }

@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-public abstract class Dude implements Entity, Animated, ActiEntities{
+public abstract class Dude implements Entity, Animated, ActiEntities, Moving{
     private final String id;
     private Point position;
     private final List<PImage> images;
@@ -58,22 +58,14 @@ public abstract class Dude implements Entity, Animated, ActiEntities{
     public double getAnimationPeriod() {
         return animationPeriod;
     }
-    public Point nextPositionDude(WorldModel world, Point destPos) {
+    public Point nextPosition(WorldModel world, Point destPos) {
         PathingStrategy strat = new AStarPathingStrartegy();
         Predicate<Point> cpt = p -> world.withinBounds(p) && !(world.isOccupied(p) && world.getOccupancyCell(p).getClass() != Stump.class);
-        BiPredicate< Point, Point> wir = (p1, p2) -> p1.adjacent(p2);
-        List<Point> path = strat.computePath(getPosition(),destPos, cpt, wir, PathingStrategy.CARDINAL_NEIGHBORS);
-        if (path != null && path.size() > 0 && path.get(0).getClass() == Point.class) {
+        BiPredicate<Point, Point> wir = (p1, p2) -> p1.adjacent(p2);
+        List<Point> path = strat.computePath(getPosition(), destPos, cpt, wir, PathingStrategy.CARDINAL_NEIGHBORS);
+        if (path != null && path.size() > 0) {
             return path.get(0);
         }
         return getPosition();
     }
-    public PImage getCurrentImage() {
-        return getImages().get(this.getImageIndex() % getImages().size());
-    }
-    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
-        scheduler.scheduleEvent(this, Functions.createActivityAction(this, world, imageStore), getActionPeriod());
-        scheduler.scheduleEvent(this, Functions.createAnimationAction(this, 0), getAnimationPeriod());
-    }
-
 }

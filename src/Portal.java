@@ -28,6 +28,16 @@ public class Portal implements Entity, Animated {
         this.position = position;
     }
 
+    @Override
+    public List<PImage> getImages() {
+        return images;
+    }
+
+    @Override
+    public int getImageIndex() {
+        return imageIndex;
+    }
+
     public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
         scheduler.scheduleEvent(this, Functions.createAnimationAction(this, 0), getAnimationPeriod());
     }
@@ -38,17 +48,5 @@ public class Portal implements Entity, Animated {
 
     public double getAnimationPeriod() {
         return this.animationPeriod;
-    }
-
-    public PImage getCurrentImage() {
-        return this.images.get(this.imageIndex % this.images.size());
-    }
-
-    /**
-     * Helper method for testing. Preserve this functionality while refactoring.
-     */
-    public String log(){
-        return this.id.isEmpty() ? null :
-                String.format("%s %d %d %d", this.id, this.position.getX(), this.position.getY(), this.imageIndex);
     }
 }

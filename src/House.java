@@ -27,17 +27,13 @@ public final class House implements Entity{
         this.position = position;
     }
 
-    /**
-     * Helper method for testing. Preserve this functionality while refactoring.
-     */
-    public String log(){
-        return this.id.isEmpty() ? null :
-                String.format("%s %d %d %d", this.id, this.position.getX(), this.position.getY(), this.imageIndex);
+    @Override
+    public List<PImage> getImages() {
+        return images;
     }
 
     @Override
-    public PImage getCurrentImage() {
-        return this.images.get(this.imageIndex % this.images.size());
+    public int getImageIndex() {
+        return imageIndex;
     }
-
 }

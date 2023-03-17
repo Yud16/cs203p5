@@ -10,7 +10,7 @@ import java.util.function.Predicate;
  * An entity that exists in the world. See EntityKind for the
  * different kinds of entities that exist.
  */
-public final class Fairy implements Entity, Animated, ActiEntities{
+public final class Fairy implements Entity, Animated, ActiEntities, Moving{
     private final String id;
     private Point position;
     private final List<PImage> images;
@@ -35,12 +35,32 @@ public final class Fairy implements Entity, Animated, ActiEntities{
         this.position = position;
     }
 
-    private boolean moveToFairy(WorldModel world, Entity target, EventScheduler scheduler) {
+    @Override
+    public List<PImage> getImages() {
+        return images;
+    }
+
+    @Override
+    public int getImageIndex() {
+        return imageIndex;
+    }
+
+    public Point nextPosition(WorldModel world, Point destPos) {
+        PathingStrategy strat = new AStarPathingStrartegy();
+        Predicate<Point> cpt = p -> world.withinBounds(p) && !(world.isOccupied(p));
+        BiPredicate< Point, Point> wir = (p1, p2) -> p1.adjacent(p2);
+        List<Point> path = strat.computePath(getPosition(),destPos, cpt, wir, PathingStrategy.CARDINAL_NEIGHBORS);
+        if (path != null && path.size() > 0) {
+            return path.get(0);
+        }
+        return getPosition();
+    }
+    public boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler) {
         if (position.adjacent(target.getPosition())) {
             world.removeEntity(scheduler, target);
             return true;
         } else {
-            Point nextPos = nextPositionFairy(world, target.getPosition());
+            Point nextPos = nextPosition(world, target.getPosition());
 
             if (!position.equals(nextPos)) {
                 world.moveEntity(scheduler, nextPos, this);
@@ -49,28 +69,13 @@ public final class Fairy implements Entity, Animated, ActiEntities{
         }
     }
 
-    private Point nextPositionFairy(WorldModel world, Point destPos) {
-        PathingStrategy strat = new AStarPathingStrartegy();
-        Predicate<Point> cpt = p -> world.withinBounds(p) && !(world.isOccupied(p));
-        BiPredicate< Point, Point> wir = (p1, p2) -> p1.adjacent(p2);
-        List<Point> path = strat.computePath(getPosition(),destPos, cpt, wir, PathingStrategy.CARDINAL_NEIGHBORS);
-        if (path != null && path.size() > 0 && path.get(0).getClass() == Point.class) {
-            return path.get(0);
-        }
-        return getPosition();
-    }
-    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
-        scheduler.scheduleEvent(this, Functions.createActivityAction(this, world, imageStore), actionPeriod);
-        scheduler.scheduleEvent(this, Functions.createAnimationAction(this, 0), getAnimationPeriod());
-    }
-
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         Optional<Entity> fairyTarget = world.findNearest(position, new ArrayList<>(List.of(Stump.class)));
 
         if (fairyTarget.isPresent()) {
             Point tgtPos = fairyTarget.get().getPosition();
 
-            if (this.moveToFairy(world, fairyTarget.get(), scheduler)) {
+            if (this.moveTo(world, fairyTarget.get(), scheduler)) {
 
                 Sapling sapling = EntityCreator.createSapling(EntityCreator.SAPLING_KEY + "_" + fairyTarget.get().getId(), tgtPos, imageStore.getImageList(EntityCreator.SAPLING_KEY), 0);
 
@@ -85,18 +90,10 @@ public final class Fairy implements Entity, Animated, ActiEntities{
         imageIndex = imageIndex + 1;
     }
 
+    @Override
+    public double getActionPeriod() {
+        return actionPeriod;
+    }
+
     public double getAnimationPeriod() {return this.animationPeriod;}
-
-    public PImage getCurrentImage() {
-            return this.images.get(this.imageIndex % this.images.size());
-    }
-
-    /**
-     * Helper method for testing. Preserve this functionality while refactoring.
-     */
-    public String log(){
-        return this.id.isEmpty() ? null :
-                String.format("%s %d %d %d", this.id, this.position.getX(), this.position.getY(), this.imageIndex);
-    }
-
 }
