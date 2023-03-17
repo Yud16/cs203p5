@@ -42,6 +42,15 @@ public class WorldTests {
     }
 
     @Test
+    public void testPortalAnimation() {
+        String sav = makeSave(1, 1, "portal myportal 0 0 0.500");
+        List<String> entities = VirtualWorld.headlessMain(new String[]{sav}, 8);
+
+        assertEquals(1, entities.size());
+        assertEquals("myportal 0 0 16", entities.get(0));
+    }
+
+    @Test
     public void testParsing() {
         String sav = """
                 Rows:
