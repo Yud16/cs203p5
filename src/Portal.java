@@ -3,55 +3,52 @@ import processing.core.PImage;
 import java.util.List;
 
 public class Portal implements Entity, Animated {
-    private String id;
+    private final String id;
     private Point position;
-    private List<PImage> images;
-    private int animationPeriod;
-    public Portal(String id, Point position, List<PImage> images, int animationPeriod) {
+    private final List<PImage> images;
+    private int imageIndex;
+    private final double animationPeriod;
+
+    public Portal(String id, Point position, List<PImage> images, double animationPeriod) {
         this.id = id;
         this.position = position;
         this.images = images;
+        this.imageIndex = 0;
         this.animationPeriod = animationPeriod;
     }
-
-
-    @Override
-    public double getAnimationPeriod() {
-        return 0;
-    }
-
-    @Override
-    public void nextImage() {
-
-    }
-
-    @Override
-    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
-
-    }
-
-    @Override
     public String getId() {
-        return null;
+        return id;
     }
 
-    @Override
     public Point getPosition() {
-        return null;
+        return position;
     }
 
-    @Override
     public void setPosition(Point position) {
-
+        this.position = position;
     }
 
-    @Override
-    public String log() {
-        return null;
+    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
+        scheduler.scheduleEvent(this, Functions.createAnimationAction(this, 0), getAnimationPeriod());
     }
 
-    @Override
+    public void nextImage() {
+        imageIndex = imageIndex + 1;
+    }
+
+    public double getAnimationPeriod() {
+        return this.animationPeriod;
+    }
+
     public PImage getCurrentImage() {
-        return null;
+        return this.images.get(this.imageIndex % this.images.size());
+    }
+
+    /**
+     * Helper method for testing. Preserve this functionality while refactoring.
+     */
+    public String log(){
+        return this.id.isEmpty() ? null :
+                String.format("%s %d %d %d", this.id, this.position.getX(), this.position.getY(), this.imageIndex);
     }
 }

@@ -35,6 +35,11 @@ public class EntityCreator {
     public static final double TREE_ACTION_MAX = 1.400;
     public static final double TREE_ACTION_MIN = 1.000;
 
+    public static final String PORTAL_KEY = "portal";
+    public static final int PORTAL_ANIMATION_PERIOD = 0;
+    public static final int PORTAL_NUM_PROPERTIES = 1;
+
+
     public static House createHouse(String id, Point position, List<PImage> images) {
         return new House(id, position, images);
     }
@@ -69,7 +74,9 @@ public class EntityCreator {
     public static DudeFull createDudeFull(String id, Point position,List<PImage> images, int resourceLimit, double actionPeriod, double animationPeriod) {
         return new DudeFull( id, position, images, resourceLimit, actionPeriod, animationPeriod);
     }
-    public static Portal createPortal(String id, Point position, List<PImage> images, int animationPeriod) {
+
+    // TODO: make sure that this works correctly
+    public static Portal createPortal(String id, Point position, double animationPeriod, List<PImage> images) {
         return new Portal(id, position, images, animationPeriod);
     }
 }

@@ -80,9 +80,13 @@ public final class VirtualWorld extends PApplet {
             }
             System.out.println(msg);
         }
-        Portal p = EntityCreator.createPortal("portal",pressed,null,0);
-        world.tryAddEntity(p);
 
+//        Portal p = EntityCreator.createPortal("portal", pressed, imageStore.getImageList("portal"),
+//                EntityCreator.PORTAL_ANIMATION_PERIOD);
+//        world.tryAddEntity(p);
+//
+//        // TODO: have to get the images, animationPeriod
+//        // TOOD: figure out what the animation Period is going to be
 
     }
 
