@@ -43,7 +43,14 @@ public class Portal implements Entity, Animated {
     public PImage getCurrentImage() {
         return this.images.get(this.imageIndex % this.images.size());
     }
-
+//    portal images/portal2.png 0 0 0 0
+//    portal images/portal3.png 0 0 0 0
+//    portal images/portal4.png 0 0 0 0
+//    portal images/portal5.png 0 0 0 0
+//    portal images/portal6.png 0 0 0 0
+//    portal images/portal7.png 0 0 0 0
+//    portal images/portal8.png 0 0 0 0
+//    portal images/portal9.png 0 0 0 0
     /**
      * Helper method for testing. Preserve this functionality while refactoring.
      */

@@ -19,6 +19,7 @@ Comment:
         stump [id] [x] [y]
 
         portal [id] [x] [y]
+        wizard [id] [x] [y] ANIMATION_PERIOD ACTION_PERIOD
       Each Entity in this world.sav file has no id, so theres just two spaces between the x and y.
 Rows:
     30
@@ -213,3 +214,4 @@ obstacle  26 19 1.057
     tree  05 05 0.545 1.343 1
 obstacle  32 21 1.139
   portal  12 03 1.15
+  wizard  12 04 1.15 1.15
