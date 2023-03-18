@@ -45,7 +45,7 @@ public abstract class FairyOG implements Entity, Animated, ActiEntities, Moving{
 
     public Point nextPosition(WorldModel world, Point destPos) {
         PathingStrategy strat = new AStarPathingStrartegy();
-        Predicate<Point> cpt = p -> world.withinBounds(p) && !(world.isOccupied(p)) && world.getOccupancyCell(p).getClass() != Stump.class;
+        Predicate<Point> cpt = p -> world.withinBounds(p) && !(world.isOccupied(p));
         BiPredicate< Point, Point> wir = Point::adjacent;
         List<Point> path = strat.computePath(getPosition(),destPos, cpt, wir, PathingStrategy.CARDINAL_NEIGHBORS);
         if (path != null && path.size() > 0) {
