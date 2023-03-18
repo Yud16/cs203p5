@@ -109,4 +109,5 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
     public int getImageIndex() {
         return imageIndex;
     }
+    //ffff
 }
