@@ -39,6 +39,10 @@ public class EntityCreator {
     public static final int PORTAL_ANIMATION_PERIOD = 0;
     public static final int PORTAL_NUM_PROPERTIES = 1;
 
+    public static final String BUSH_KEY = "bush";
+    public static final int BUSH_ANIMATION_PERIOD = 0;
+    public static final int BUSH_NUM_PROPERTIES = 1;
+
     public static final String WIZARD_KEY = "wizard";
     public static final int WIZARD_ANIMATION_PERIOD = 0;
     public static final int WIZARD_ACTION_PERIOD = 1;
@@ -84,6 +88,11 @@ public class EntityCreator {
     public static Portal createPortal(String id, Point position, double animationPeriod, List<PImage> images) {
         return new Portal(id, position, images, animationPeriod);
     }
+
+    public static Bush createBush(String id, Point position, double animationPeriod, List<PImage> images) {
+        return new Bush(id, position, images, animationPeriod);
+    }
+
     public static Wizard createWizard(String id, Point position, List<PImage> images, double actionPeriod, double animationPeriod) {
         return new Wizard(id, position, images, actionPeriod, animationPeriod);
     }

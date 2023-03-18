@@ -107,6 +107,15 @@ public final class Functions {
         }
     }
 
+    public static void parseBush(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
+        if (properties.length == EntityCreator.BUSH_NUM_PROPERTIES) {
+            Entity entity = EntityCreator.createBush(id, pt, Double.parseDouble(properties[EntityCreator.BUSH_ANIMATION_PERIOD]), imageStore.getImageList(EntityCreator.BUSH_KEY));
+            world.tryAddEntity(entity);
+        }else{
+            throw new IllegalArgumentException(String.format("%s requires %d properties when parsing", EntityCreator.BUSH_KEY, EntityCreator.BUSH_NUM_PROPERTIES));
+        }
+    }
+
     public static void parseHouse(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
         if (properties.length == EntityCreator.HOUSE_NUM_PROPERTIES) {
             Entity entity = EntityCreator.createHouse(id, pt, imageStore.getImageList(EntityCreator.HOUSE_KEY));
@@ -188,6 +197,7 @@ public final class Functions {
                 case EntityCreator.STUMP_KEY -> Functions.parseStump(world, properties, pt, id, imageStore);
                 case EntityCreator.PORTAL_KEY-> Functions.parsePortal(world, properties, pt, id, imageStore);
                 case EntityCreator.WIZARD_KEY -> Functions.parseWizard(world, properties, pt, id, imageStore);
+                case EntityCreator.BUSH_KEY -> Functions.parseBush(world, properties, pt, id, imageStore);
                 default -> throw new IllegalArgumentException("Entity key is unknown");
             }
         }else{

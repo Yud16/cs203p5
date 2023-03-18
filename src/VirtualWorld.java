@@ -82,21 +82,61 @@ public final class VirtualWorld extends PApplet {
 
 
             if (entity.getClass() == Portal.class) {
-                // EVALUATING CORRECTLY
                 Point pressedLeft = new Point(pressed.getX() - 1, pressed.getY());
-                // How do I put this wizard in the world now?
-
+                // CREATING THE WIZARD
                 Wizard someWizard = EntityCreator.createWizard("new wizard", pressedLeft,
                         imageStore.getImageList(EntityCreator.WIZARD_KEY), 1.15, 1.15);
-
-//                world.removeEntity(scheduler, entity);
-                // NOTE: want the portal to remain there
-
                 world.addEntity(someWizard);
                 someWizard.scheduleActions(scheduler, world, imageStore);
+
+                Background blue = new Background("blue", imageStore.getImageList("blue"));
+                // HERE: have to change the background images
+                // TODO: make this more efficient/change to helper method
+
+                // SETTING THE BACKGROUND
+                int y = pressed.getY();
+                int x = pressed.getX();
+
+                world.setBackground(y-1, x+1, blue);
+                world.setBackground(y-1, x, blue);
+                world.setBackground(y-1, x-1, blue);
+                world.setBackground(y, x+1, blue);
+                world.setBackground(y, x, blue);
+                world.setBackground(y, x-1, blue);
+                world.setBackground(y +1, x +1, blue);
+                world.setBackground(y+1, x, blue);
+                world.setBackground(y+1,x-1, blue);
+
+                // TODO: BUSH SHOULD REALLY BE MODELED AFTER HOUSE
+                // ADDING THE BUSHES
+                Bush bushTopLeft = EntityCreator.createBush("bush",
+                        new Point(pressed.getX() - 1, pressed.getY() -1), 0,
+                        imageStore.getImageList(EntityCreator.BUSH_KEY));
+
+                Bush bushTopRight = EntityCreator.createBush("bush",
+                        new Point(pressed.getX() + 1, pressed.getY() -1), 0,
+                        imageStore.getImageList(EntityCreator.BUSH_KEY));
+
+                Bush bushBottomLeft = EntityCreator.createBush("bush",
+                        new Point(pressed.getX() - 1, pressed.getY() + 1), 0,
+                        imageStore.getImageList(EntityCreator.BUSH_KEY));
+
+                Bush bushBottomRight = EntityCreator.createBush("bush",
+                        new Point(pressed.getX() + 1, pressed.getY() + 1), 0,
+                        imageStore.getImageList(EntityCreator.BUSH_KEY));
+
+                world.addEntity(bushTopLeft);
+                world.addEntity(bushTopRight);
+                world.addEntity(bushBottomLeft);
+                world.addEntity(bushBottomRight);
             }
         }
-        // TODO: implement spawning an entity when the mouse is presed (a wizard, obviously)
+        // TODO: have to animate the surrounding tiles when a wizard is pressed,
+        // TODO: have to make portal and wizard bigger (have to look better)
+        // TODO: going to write it to work first, then add in some helper methods
+        // TODO: there is error when fairy and wizard have to cross paths ... that will be fixed with further implemtation
+
+        // idea: could we illuminate the path from the wizard to the fairy (and kind of darken everything else)
     }
 
     private void scheduleActions(WorldModel world, EventScheduler scheduler, ImageStore imageStore) {
