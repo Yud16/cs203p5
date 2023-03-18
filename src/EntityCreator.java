@@ -48,6 +48,11 @@ public class EntityCreator {
     public static final int WIZARD_ACTION_PERIOD = 1;
     public static final int WIZARD_NUM_PROPERTIES = 2;
 
+    public static final String EVIL_FAIRY_KEY = "evil-fairy";
+    public static final int EVIL_FAIRY_ANIMATION_PERIOD = 0;
+    public static final int EVIL_FAIRY_ACTION_PERIOD = 1;
+    public static final int EVIL_FAIRY_NUM_PROPERTIES = 2;
+
 
     public static House createHouse(String id, Point position, List<PImage> images) {
         return new House(id, position, images);

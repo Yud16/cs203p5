@@ -44,9 +44,11 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
         return images;
     }
 
+    // But we are transforming a different Entity, so are we even allowed to do that?
+
+    // THIS MIGHT NOT WORK, BECAUSE TRANSFORM SHOULD BE CALLED
     private boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler) {
         if (position.adjacent(target.getPosition())) {
-            world.removeEntity(scheduler, target);
             return true;
         } else {
             Point nextPos = nextPosition(world, target.getPosition());
@@ -63,6 +65,7 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
         scheduler.scheduleEvent(this, Functions.createAnimationAction(this, 0), getAnimationPeriod());
     }
 
+    // TODO: make sure that this implementation is OK!
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         Optional<Entity> WizardTarget = world.findNearest(position, new ArrayList<>(List.of(Fairy.class)));
 
@@ -71,13 +74,18 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
 
             if (this.moveTo(world, WizardTarget.get(), scheduler)) {
 
-                EvilFairy ef = EntityCreator.createEvilFairy(EntityCreator.SAPLING_KEY + "_" + WizardTarget.get().getId(), tgtPos, imageStore.getImageList(EntityCreator.SAPLING_KEY), 0, 0);
+                EvilFairy ef = EntityCreator.createEvilFairy(EntityCreator.EVIL_FAIRY_KEY + "_" +
+                        WizardTarget.get().getId(), tgtPos, imageStore.getImageList(EntityCreator.EVIL_FAIRY_KEY),
+                        0.5, 0.5);
+                // NOTE - actionPeriod and animationPeriod can't be 0
+
+                world.removeEntity(scheduler, WizardTarget.get());
+                scheduler.unscheduleAllEvents(WizardTarget.get());
 
                 world.addEntity(ef);
                 ef.scheduleActions(scheduler, world, imageStore);
             }
         }
-
         scheduler.scheduleEvent(this, Functions.createActivityAction(this, world, imageStore), actionPeriod);
     }
 
@@ -109,5 +117,4 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
     public int getImageIndex() {
         return imageIndex;
     }
-    //ffff
 }

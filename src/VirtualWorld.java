@@ -85,7 +85,7 @@ public final class VirtualWorld extends PApplet {
                 Point pressedLeft = new Point(pressed.getX() - 1, pressed.getY());
                 // CREATING THE WIZARD
                 Wizard someWizard = EntityCreator.createWizard("new wizard", pressedLeft,
-                        imageStore.getImageList(EntityCreator.WIZARD_KEY), 1.15, 1.15);
+                        imageStore.getImageList(EntityCreator.WIZARD_KEY), 0.5, 0.5);
                 world.addEntity(someWizard);
                 someWizard.scheduleActions(scheduler, world, imageStore);
 
@@ -131,10 +131,6 @@ public final class VirtualWorld extends PApplet {
                 world.addEntity(bushBottomRight);
             }
         }
-        // TODO: have to animate the surrounding tiles when a wizard is pressed,
-        // TODO: have to make portal and wizard bigger (have to look better)
-        // TODO: going to write it to work first, then add in some helper methods
-        // TODO: there is error when fairy and wizard have to cross paths ... that will be fixed with further implemtation
 
         // idea: could we illuminate the path from the wizard to the fairy (and kind of darken everything else)
     }
