@@ -79,15 +79,24 @@ public final class VirtualWorld extends PApplet {
                 msg = msg + p.getHealth();
             }
             System.out.println(msg);
+
+
+            if (entity.getClass() == Portal.class) {
+                // EVALUATING CORRECTLY
+                Point pressedLeft = new Point(pressed.getX() - 1, pressed.getY());
+                // How do I put this wizard in the world now?
+
+                Wizard someWizard = EntityCreator.createWizard("new wizard", pressedLeft,
+                        imageStore.getImageList(EntityCreator.WIZARD_KEY), 1.15, 1.15);
+
+//                world.removeEntity(scheduler, entity);
+                // NOTE: want the portal to remain there
+
+                world.addEntity(someWizard);
+                someWizard.scheduleActions(scheduler, world, imageStore);
+            }
         }
-
-//        Portal p = EntityCreator.createPortal("portal", pressed, imageStore.getImageList("portal"),
-//                EntityCreator.PORTAL_ANIMATION_PERIOD);
-//        world.tryAddEntity(p);
-//
-//        // TODO: have to get the images, animationPeriod
-//        // TOOD: figure out what the animation Period is going to be
-
+        // TODO: implement spawning an entity when the mouse is presed (a wizard, obviously)
     }
 
     private void scheduleActions(WorldModel world, EventScheduler scheduler, ImageStore imageStore) {

@@ -70,10 +70,6 @@ public class EntityCreator {
         return new Fairy(id, position, images, actionPeriod, animationPeriod);
     }
 
-    public static Fairy createWizard(String id, Point position, double actionPeriod, double animationPeriod, List<PImage> images) {
-        return new Fairy(id, position, images, actionPeriod, animationPeriod);
-    }
-
     // need resource count, though it always starts at 0
     public static DudeNotFull createDudeNotFull(String id, Point position, List<PImage> images, int resourceLimit,double actionPeriod, double animationPeriod) {
         return new DudeNotFull(id, position, images,resourceLimit, actionPeriod, animationPeriod);

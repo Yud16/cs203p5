@@ -73,7 +73,7 @@ public final class Functions {
 
     public static void parseWizard(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
         if (properties.length == EntityCreator.WIZARD_NUM_PROPERTIES) {
-            Entity entity = EntityCreator.createWizard(id, pt, Double.parseDouble(properties[EntityCreator.WIZARD_ACTION_PERIOD]), Double.parseDouble(properties[EntityCreator.WIZARD_ANIMATION_PERIOD]), imageStore.getImageList(EntityCreator.WIZARD_KEY));
+            Entity entity = EntityCreator.createWizard(id, pt, imageStore.getImageList(EntityCreator.WIZARD_KEY), Double.parseDouble(properties[EntityCreator.WIZARD_ANIMATION_PERIOD]), Double.parseDouble(properties[EntityCreator.WIZARD_ACTION_PERIOD]));
             world.tryAddEntity(entity);
         }else{
             throw new IllegalArgumentException(String.format("%s requires %d properties when parsing", EntityCreator.WIZARD_KEY, EntityCreator.WIZARD_NUM_PROPERTIES));
