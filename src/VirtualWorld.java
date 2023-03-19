@@ -89,7 +89,7 @@ public final class VirtualWorld extends PApplet {
                 world.addEntity(someWizard);
                 someWizard.scheduleActions(scheduler, world, imageStore);
 
-                Background blue = new Background("blue", imageStore.getImageList("blue"));
+                Background ground = new Background("ground", imageStore.getImageList("ground"));
                 // HERE: have to change the background images
                 // TODO: make this more efficient/change to helper method
 
@@ -97,38 +97,22 @@ public final class VirtualWorld extends PApplet {
                 int y = pressed.getY();
                 int x = pressed.getX();
 
-                world.setBackground(y-1, x+1, blue);
-                world.setBackground(y-1, x, blue);
-                world.setBackground(y-1, x-1, blue);
-                world.setBackground(y, x+1, blue);
-                world.setBackground(y, x, blue);
-                world.setBackground(y, x-1, blue);
-                world.setBackground(y +1, x +1, blue);
-                world.setBackground(y+1, x, blue);
-                world.setBackground(y+1,x-1, blue);
-
-                // TODO: BUSH SHOULD REALLY BE MODELED AFTER HOUSE
-                // ADDING THE BUSHES
-                Bush bushTopLeft = EntityCreator.createBush("bush",
-                        new Point(pressed.getX() - 1, pressed.getY() -1), 0,
-                        imageStore.getImageList(EntityCreator.BUSH_KEY));
-
-                Bush bushTopRight = EntityCreator.createBush("bush",
-                        new Point(pressed.getX() + 1, pressed.getY() -1), 0,
-                        imageStore.getImageList(EntityCreator.BUSH_KEY));
-
-                Bush bushBottomLeft = EntityCreator.createBush("bush",
-                        new Point(pressed.getX() - 1, pressed.getY() + 1), 0,
-                        imageStore.getImageList(EntityCreator.BUSH_KEY));
-
-                Bush bushBottomRight = EntityCreator.createBush("bush",
-                        new Point(pressed.getX() + 1, pressed.getY() + 1), 0,
-                        imageStore.getImageList(EntityCreator.BUSH_KEY));
-
-                world.addEntity(bushTopLeft);
-                world.addEntity(bushTopRight);
-                world.addEntity(bushBottomLeft);
-                world.addEntity(bushBottomRight);
+                world.setBackground(y-2, x-1, ground);
+                world.setBackground(y-1, x-1, ground);
+                world.setBackground(y-1, x, ground);
+                world.setBackground(y-1, x+1, ground);
+                world.setBackground(y-1, x+2, ground);
+                world.setBackground(y, x-2, ground);
+                world.setBackground(y, x-1, ground);
+                world.setBackground(y, x, ground);
+                world.setBackground(y, x+1, ground);
+                world.setBackground(y+1,x-1, ground);
+                world.setBackground(y+1, x, ground);
+                world.setBackground(y +1, x +1, ground);
+                world.setBackground(y +1, x + 2, ground);
+                world.setBackground(y + 2, x - 2, ground);
+                world.setBackground(y + 2, x - 1, ground);
+                world.setBackground(y + 2, x + 1, ground);
             }
         }
 
