@@ -5,8 +5,15 @@ parse*: can be in both worldModel and Entity
 
 
 TODO:
-1. remove the background from the wizard
-2. change the moving strategy of the wizard so that it looks for fairies
-3. transform the fairies once they are in contact w/ the wizard
-4. get the wizard to spawn upon click on the portal
-5. change the background when the button is clicked as well
+1. remove the background from the wizard (CHECK)
+2. change the moving strategy of the wizard so that it looks for fairies (CHECK)
+3. transform the fairies once they are in contact w/ the wizard (CHECK)
+4. get the wizard to spawn upon click on the portal (CHECK)
+5. change the background when the button is clicked as well (CHECK)
+6. improve overall aesthetics!
+ a. redraw portal (CHECK)
+ b. redraw wizard
+ c. redraw surrounding tiles
+ d. redraw evilFairy
+7. re-organize pointPressed() method
+8. EvilFairies should burn houses, not turn them into saplings

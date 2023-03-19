@@ -11,9 +11,9 @@ TODO:
 4. get the wizard to spawn upon click on the portal (CHECK)
 5. change the background when the button is clicked as well (CHECK)
 6. improve overall aesthetics!
- a. redraw portal
+ a. redraw portal (CHECK)
  b. redraw wizard
  c. redraw surrounding tiles
  d. redraw evilFairy
 7. re-organize pointPressed() method
-8. EvilFaries should burn houses, not turn them into saplings
+8. EvilFairies should burn houses, not turn them into saplings
