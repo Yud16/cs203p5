@@ -12,8 +12,14 @@ TODO:
 5. change the background when the button is clicked as well (CHECK)
 6. improve overall aesthetics!
  a. redraw portal (CHECK)
- b. redraw wizard
- c. redraw surrounding tiles
+ b. redraw wizard (CHECK)
+ c. redraw surrounding tiles (CHECK)
  d. redraw evilFairy
+ e. draw burned house (CHECK)
 7. re-organize pointPressed() method
-8. EvilFairies should burn houses, not turn them into saplings
+8. EvilFairies should burn houses, not turn them into saplings (CHECK)
+9. change tree configuration so all houses can be reached (CHECK) [Make sure this is OK]
+10. final message when all the houses burn?
+
+
+    tree  36 27 0.150 1.230 2

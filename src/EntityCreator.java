@@ -49,13 +49,22 @@ public class EntityCreator {
     public static final int EVIL_FAIRY_ACTION_PERIOD = 1;
     public static final int EVIL_FAIRY_NUM_PROPERTIES = 2;
 
+    public static final String BURNED_HOUSE_KEY = "burned-house";
+    public static final int BURNED_HOUSE_ANIMATION_PERIOD = 0;
+    public static final int BURNED_HOUSE_NUM_PROPERTIES = 1;
+
 
     public static House createHouse(String id, Point position, List<PImage> images) {
         return new House(id, position, images);
     }
 
+
     public static Obstacle createObstacle(String id, Point position, double animationPeriod, List<PImage> images) {
         return new Obstacle(id, position, images, animationPeriod);
+    }
+
+    public static BurnedHouse createBurnedHouse(String id, Point position, double animationPeriod, List<PImage> images) {
+        return new BurnedHouse(id, position, images, animationPeriod);
     }
 
     public static Tree createTree(String id, Point position, double actionPeriod, double animationPeriod, int health, List<PImage> images) {

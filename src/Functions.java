@@ -107,6 +107,15 @@ public final class Functions {
         }
     }
 
+    public static void parseBurnedHouse(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
+        if (properties.length == EntityCreator.BURNED_HOUSE_NUM_PROPERTIES) {
+            Entity entity = EntityCreator.createBurnedHouse(id, pt, Double.parseDouble(properties[EntityCreator.BURNED_HOUSE_ANIMATION_PERIOD]), imageStore.getImageList(EntityCreator.BURNED_HOUSE_KEY));
+            world.tryAddEntity(entity);
+        }else{
+            throw new IllegalArgumentException(String.format("%s requires %d properties when parsing", EntityCreator.BURNED_HOUSE_KEY, EntityCreator.BURNED_HOUSE_NUM_PROPERTIES));
+        }
+    }
+
     public static void parseHouse(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
         if (properties.length == EntityCreator.HOUSE_NUM_PROPERTIES) {
             Entity entity = EntityCreator.createHouse(id, pt, imageStore.getImageList(EntityCreator.HOUSE_KEY));
@@ -115,6 +124,7 @@ public final class Functions {
             throw new IllegalArgumentException(String.format("%s requires %d properties when parsing", EntityCreator.HOUSE_KEY, EntityCreator.HOUSE_NUM_PROPERTIES));
         }
     }
+
     public static void parseStump(WorldModel world, String[] properties, Point pt, String id, ImageStore imageStore) {
         if (properties.length == EntityCreator.STUMP_NUM_PROPERTIES) {
             Entity entity = EntityCreator.createStump(id, pt, imageStore.getImageList(EntityCreator.STUMP_KEY));
@@ -188,6 +198,7 @@ public final class Functions {
                 case EntityCreator.STUMP_KEY -> Functions.parseStump(world, properties, pt, id, imageStore);
                 case EntityCreator.PORTAL_KEY-> Functions.parsePortal(world, properties, pt, id, imageStore);
                 case EntityCreator.WIZARD_KEY -> Functions.parseWizard(world, properties, pt, id, imageStore);
+                case EntityCreator.BURNED_HOUSE_KEY -> Functions.parseBurnedHouse(world, properties, pt, id, imageStore);
                 default -> throw new IllegalArgumentException("Entity key is unknown");
             }
         }else{
