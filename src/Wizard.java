@@ -52,7 +52,6 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
             return true;
         } else {
             Point nextPos = nextPosition(world, target.getPosition());
-
             if (!position.equals(nextPos)) {
                 world.moveEntity(scheduler, nextPos, this);
             }
@@ -68,7 +67,7 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
     // TODO: make sure that this implementation is OK!
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         Optional<Entity> WizardTarget = world.findNearest(position, new ArrayList<>(List.of(Fairy.class)));
-
+        world.makeWizardTrail(imageStore, getPosition());
         if (WizardTarget.isPresent()) {
             Point tgtPos = WizardTarget.get().getPosition();
 

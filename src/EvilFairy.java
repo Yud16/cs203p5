@@ -21,11 +21,8 @@ public final class EvilFairy extends FairyOG implements Entity, Animated, ActiEn
             if (this.moveTo(world, fairyTarget.get(), scheduler)) {
 
                 BurnedHouse burnedHouse = EntityCreator.createBurnedHouse(EntityCreator.BURNED_HOUSE_KEY, tgtPos, 0.2, imageStore.getImageList(EntityCreator.BURNED_HOUSE_KEY));
-                // Sapling sapling = EntityCreator.createSapling(EntityCreator.SAPLING_KEY + "_" + fairyTarget.get().getId(), tgtPos, imageStore.getImageList(EntityCreator.SAPLING_KEY), 0);
-
                 world.addEntity(burnedHouse);
                 burnedHouse.scheduleActions(scheduler, world, imageStore);
-//                sapling.scheduleActions(scheduler, world, imageStore);
             }
         }
 

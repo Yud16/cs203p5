@@ -70,8 +70,11 @@ public final class WorldModel {
             return Optional.empty();
         }
     }
-
-    private void setBackgroundCell(Point pos, Background background) {
+    public void makeWizardTrail(ImageStore imageStore, Point position) {
+        Background ground = new Background("ground", imageStore.getImageList("ground"));
+        setBackgroundCell(position, ground);
+    }
+    public void setBackgroundCell(Point pos, Background background) {
         this.background[pos.getY()][pos.getX()] = background;
     }
     public void setPortalBG(Point pressed, Background ground) {
