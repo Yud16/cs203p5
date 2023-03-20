@@ -73,20 +73,14 @@ public final class VirtualWorld extends PApplet {
         Optional<Entity> entityOptional = world.getOccupant(pressed);
         if (entityOptional.isPresent()) {
             Entity entity = entityOptional.get();
-            String msg = entity.getId() + ": " + entity.getClass() + " : ";
-            if (entity instanceof Plant) {
-                Plant p = (Plant) entity;
-                msg = msg + p.getHealth();
-            }
-            System.out.println(msg);
-
+            entity.printInfo();
 
             if (entity.getClass() == Portal.class) {
                 Point pressedLeft = new Point(pressed.getX() - 1, pressed.getY());
                 // CREATING THE WIZARD
                 Wizard someWizard = EntityCreator.createWizard("new wizard", pressedLeft,
                         imageStore.getImageList(EntityCreator.WIZARD_KEY), 0.5, 0.5);
-                world.addEntity(someWizard);
+                world.tryAddEntity(someWizard);
                 someWizard.scheduleActions(scheduler, world, imageStore);
 
                 Background ground = new Background("ground", imageStore.getImageList("ground"));
@@ -94,25 +88,7 @@ public final class VirtualWorld extends PApplet {
                 // TODO: make this more efficient/change to helper method
 
                 // SETTING THE BACKGROUND
-                int y = pressed.getY();
-                int x = pressed.getX();
-
-                world.setBackground(y-2, x-1, ground);
-                world.setBackground(y-1, x-1, ground);
-                world.setBackground(y-1, x, ground);
-                world.setBackground(y-1, x+1, ground);
-                world.setBackground(y-1, x+2, ground);
-                world.setBackground(y, x-2, ground);
-                world.setBackground(y, x-1, ground);
-                world.setBackground(y, x, ground);
-                world.setBackground(y, x+1, ground);
-                world.setBackground(y+1,x-1, ground);
-                world.setBackground(y+1, x, ground);
-                world.setBackground(y +1, x +1, ground);
-                world.setBackground(y +1, x + 2, ground);
-                world.setBackground(y + 2, x - 2, ground);
-                world.setBackground(y + 2, x - 1, ground);
-                world.setBackground(y + 2, x + 1, ground);
+               world.setPortalBG(pressed, ground);
             }
         }
 

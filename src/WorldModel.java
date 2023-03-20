@@ -74,6 +74,27 @@ public final class WorldModel {
     private void setBackgroundCell(Point pos, Background background) {
         this.background[pos.getY()][pos.getX()] = background;
     }
+    public void setPortalBG(Point pressed, Background ground) {
+        int y = pressed.getY();
+        int x = pressed.getX();
+
+        setBackground(y-2, x-1, ground);
+        setBackground(y-1, x-1, ground);
+        setBackground(y-1, x, ground);
+        setBackground(y-1, x+1, ground);
+        setBackground(y-1, x+2, ground);
+        setBackground(y, x-2, ground);
+        setBackground(y, x-1, ground);
+        setBackground(y, x, ground);
+        setBackground(y, x+1, ground);
+        setBackground(y+1,x-1, ground);
+        setBackground(y+1, x, ground);
+        setBackground(y +1, x +1, ground);
+        setBackground(y +1, x + 2, ground);
+        setBackground(y + 2, x - 2, ground);
+        setBackground(y + 2, x - 1, ground);
+        setBackground(y + 2, x + 1, ground);
+    }
 
     private Background getBackgroundCell(Point pos) {
         return background[pos.getY()][pos.getX()];

@@ -19,5 +19,13 @@ public interface Entity {
         return this.getImages().get(this.getImageIndex() % this.getImages().size());
     }
     int getImageIndex();
+    default void printInfo() {
+        String msg = getId() + ": " + this.getClass() + " : ";
+        if (this instanceof Plant) {
+            Plant p = (Plant) this;
+            msg = msg + p.getHealth();
+        }
+        System.out.println(msg);
+    }
 }
 
