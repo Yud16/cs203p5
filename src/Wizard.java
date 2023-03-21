@@ -44,9 +44,6 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
         return images;
     }
 
-    // But we are transforming a different Entity, so are we even allowed to do that?
-
-    // THIS MIGHT NOT WORK, BECAUSE TRANSFORM SHOULD BE CALLED
     private boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler) {
         if (position.adjacent(target.getPosition())) {
             return true;
@@ -75,7 +72,7 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
 
                 EvilFairy ef = EntityCreator.createEvilFairy(EntityCreator.EVIL_FAIRY_KEY + "_" +
                         WizardTarget.get().getId(), tgtPos, imageStore.getImageList(EntityCreator.EVIL_FAIRY_KEY),
-                        0.5, 0.5);
+                        0.5, 0.2);
                 // NOTE - actionPeriod and animationPeriod can't be 0
 
                 world.removeEntity(scheduler, WizardTarget.get());

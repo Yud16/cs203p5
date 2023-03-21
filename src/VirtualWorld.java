@@ -85,7 +85,6 @@ public final class VirtualWorld extends PApplet {
 
                 Background ground = new Background("ground", imageStore.getImageList("ground"));
                 // HERE: have to change the background images
-                // TODO: make this more efficient/change to helper method
 
                 // SETTING THE BACKGROUND
                world.setPortalBG(pressed, ground);

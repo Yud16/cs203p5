@@ -44,11 +44,15 @@ wizard images/wizard-1.png 83 74 117 0
 wizard images/wizard-2.png 83 74 117 0
 wizard images/wizard-3.png 83 74 117 0
 ground images/ground.png
-evil-fairy images/evil-fairy-1.png 255 255 255 0
-evil-fairy images/evil-fairy-2.png 255 255 255 0
-evil-fairy images/evil-fairy-3.png 255 255 255 0
-evil-fairy images/evil-fairy-4.png 255 255 255 0
-evil-fairy images/evil-fairy-5.png 255 255 255 0
+evil-fairy images/evil-fairy-1.png
+evil-fairy images/evil-fairy-2.png
+evil-fairy images/evil-fairy-3.png
+evil-fairy images/evil-fairy-4.png
+evil-fairy images/evil-fairy-5.png
+evil-fairy images/evil-fairy-6.png
+evil-fairy images/evil-fairy-7.png
+evil-fairy images/evil-fairy-8.png
+evil-fairy images/evil-fairy-9.png
 burned-house images/burned-house-1.png 255 255 255 0
 burned-house images/burned-house-2.png 255 255 255 0
 burned-house images/burned-house-3.png 255 255 255 0
