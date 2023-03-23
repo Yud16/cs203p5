@@ -19,7 +19,14 @@ TODO:
 7. re-organize pointPressed() method
 8. EvilFairies should burn houses, not turn them into saplings (CHECK)
 9. change tree configuration so all houses can be reached (CHECK) [Make sure this is OK]
-10. final message when all the houses burn?
+10. final message when all the houses burn? (SKIP)
+
+
+still to do:
+1. redraw the evilFairy sprites
+2. make sure that changing tree configuration is OK
+
+
 
 
     tree  36 27 0.150 1.230 2
