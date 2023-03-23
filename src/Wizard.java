@@ -70,7 +70,7 @@ public final class Wizard implements Entity, Animated, ActiEntities, Moving {
 
             if (this.moveTo(world, WizardTarget.get(), scheduler)) {
 
-                EvilFairy ef = EntityCreator.createEvilFairy(EntityCreator.EVIL_FAIRY_KEY + "_" +
+                Dragon ef = EntityCreator.createDragon(EntityCreator.EVIL_FAIRY_KEY + "_" +
                         WizardTarget.get().getId(), tgtPos, imageStore.getImageList(EntityCreator.EVIL_FAIRY_KEY),
                         0.5, 0.2);
                 // NOTE - actionPeriod and animationPeriod can't be 0

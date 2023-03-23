@@ -8,8 +8,8 @@ import java.util.Optional;
  * An entity that exists in the world. See EntityKind for the
  * different kinds of entities that exist.
  */
-public final class EvilFairy extends FairyOG implements Entity, Animated, ActiEntities, Moving{
-    public EvilFairy(String id, Point position, List<PImage> images,double actionPeriod, double animationPeriod) {
+public final class Dragon extends FairyOG implements Entity, Animated, ActiEntities, Moving{
+    public Dragon(String id, Point position, List<PImage> images,double actionPeriod, double animationPeriod) {
         super(id, position, images, actionPeriod, animationPeriod);
     }
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {

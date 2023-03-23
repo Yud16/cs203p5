@@ -102,7 +102,7 @@ public class EntityCreator {
     public static Wizard createWizard(String id, Point position, List<PImage> images, double actionPeriod, double animationPeriod) {
         return new Wizard(id, position, images, actionPeriod, animationPeriod);
     }
-    public static EvilFairy createEvilFairy(String id, Point position, List<PImage> images,double actionPeriod, double animationPeriod) {
-        return new EvilFairy(id, position, images, actionPeriod, animationPeriod);
+    public static Dragon createDragon(String id, Point position, List<PImage> images,double actionPeriod, double animationPeriod) {
+        return new Dragon(id, position, images, actionPeriod, animationPeriod);
     }
 }
